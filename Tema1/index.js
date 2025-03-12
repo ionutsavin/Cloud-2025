@@ -103,6 +103,11 @@ const server = http.createServer((req, res) => {
         let body = '';
         req.on('data', chunk => { body += chunk; });
         req.on('end', () => {
+            if(body == ''){
+                res.writeHead(204);
+                res.end(JSON.stringify({ success: false, message: 'No content' }));
+                console.log('Body is empty');
+            }
             const author = JSON.parse(body);
             pool.query('UPDATE authors SET name = $1 WHERE name = $2 RETURNING *', [author.name, name], (error, results) => {
                 if (error) {
@@ -129,6 +134,11 @@ const server = http.createServer((req, res) => {
         let body = '';
         req.on('data', chunk => { body += chunk; });
         req.on('end', () => {
+            if(body == ''){
+                res.writeHead(204);
+                res.end(JSON.stringify({ success: false, message: 'No content' }));
+                console.log('Body is empty');
+            }
             const author = JSON.parse(body);
             pool.query('UPDATE authors SET books_written = $1 WHERE name = $2 RETURNING *', [author.books_written, name], (error, results) => {
                 if (error) {
