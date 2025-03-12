@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Post Request",
+			"name": "Post Request Authors",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Request",
+			"name": "Get Request Authors",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -66,7 +66,7 @@
 			"response": []
 		},
 		{
-			"name": "Put Request",
+			"name": "Put Request Authors",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -95,7 +95,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Request",
+			"name": "Delete Request Authors",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -109,6 +109,102 @@
 					"path": [
 						"authors",
 						"Ion-Creanga"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Request Authors name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/authors_name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authors_name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Request Authors books_writen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Ion\",\r\n    \"books_written\" : 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authors_books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authors_books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request Authors books_writen",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"books_written\" : 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authors_books/Ion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authors_books",
+						"Ion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request Authors books_written",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/authors_books/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authors_books",
+						"5"
 					]
 				}
 			},
