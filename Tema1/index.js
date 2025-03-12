@@ -50,6 +50,14 @@ const server = http.createServer((req, res) => {
         req.on('data', chunk => { body += chunk; });
         req.on('end', () => {
             const author = JSON.parse(body);
+            pool.query('SELECT * FROM authors WHERE name = $1', [author.name], (error, results) => {
+                if(results.rows.length > 0){
+                    res.writeHead(409);
+                    res.end(JSON.stringify({ success: false, message: 'Author already exists' }));
+                    console.log('Author already exists');
+                }
+            }
+            );
             pool.query('INSERT INTO authors (name) VALUES ($1) RETURNING *', [author.name], (error, results) => {
                 if (error) {
                     res.writeHead(500);
@@ -68,6 +76,14 @@ const server = http.createServer((req, res) => {
         req.on('data', chunk => { body += chunk; });
         req.on('end', () => {
             const author = JSON.parse(body);
+            pool.query('SELECT * FROM authors WHERE name = $1', [author.name], (error, results) => {
+                if(results.rows.length > 0){
+                    res.writeHead(409);
+                    res.end(JSON.stringify({ success: false, message: 'Author already exists' }));
+                    console.log('Author already exists');
+                }
+            }
+            );
             pool.query('INSERT INTO authors (name, books_written) VALUES ($1, $2) RETURNING *', [author.name, author.books_written], (error, results) => {
                 if (error) {
                     res.writeHead(500);
