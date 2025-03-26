@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books by <%= author %></title>
+</head>
+<body>
+    <h1>Books by <%= author %></h1>
+    <ul>
+        <% if (books.length > 0) { %>
+            <% books.forEach(book => { %>
+                <li><strong><%= book.title %></strong></li>
+            <% }); %>
+        <% } else { %>
+            <li>No books found.</li>
+        <% } %>
+    </ul>
+
+    <a href="/authors">Back to Authors</a>
+</body>
+</html>

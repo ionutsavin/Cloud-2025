@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <h1>Authors List</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        <% authors.forEach(author => { %>
+        <tr>
+            <td><a href="/authors/<%= author.name %>"><%= author.name %></a></td>
+            <td>
+                <form action="/authors/edit/<%= author.id %>" method="POST" style="display:inline;">
+                    <input type="text" name="name" placeholder="New Name" required>
+                    <button type="submit">Edit</button>
+                </form>
+                <form action="/authors/delete/<%= author.id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="/authors/info/<%= author.name %>" method="GET">
+                    <button type="submit">Search for General Info</button>
+                </form>
+            </td>
+        </tr>
+        <% }); %>
+    </table>
+
+    <h2>Add New Author</h2>
+    <form action="/authors" method="POST">
+        <input type="text" name="name" placeholder="Author Name" required>
+        <button type="submit">Add Author</button>
+    </form>
+
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>
